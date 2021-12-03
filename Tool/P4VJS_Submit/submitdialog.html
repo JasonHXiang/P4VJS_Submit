@@ -24,166 +24,166 @@
 
 <body onload="submitMain();" style="margin-left: 20px;">
 
-<h2 id="header"></h2>
+  <h2 id="header"></h2>
 
-<h3>提交日志(Description)</h3>
+  <h3>提交日志(Description)</h3>
 
-<textarea id="description" name="description" rows="10" cols="120"></textarea>
+  <textarea id="description" name="description" rows="10" cols="120"></textarea>
 
-<h4 id="desc_header">&nbsp</h4>
+  <h4 id="desc_header">&nbsp</h4>
 
-<h3>文件列表(Files)</h3>
+  <h3>文件列表(Files)</h3>
 
-<h3 id="files_header"></h3>
+  <h3 id="files_header"></h3>
 
-<label for="allfiles">
-    <input type="checkbox" checked="checked" id="allfiles" onclick="checkAll('Files',this.checked);" />
-    <b>全选/反选</b>
-</label>
+  <label for="allfiles">
+      <input type="checkbox" checked="checked" id="allfiles" onclick="checkAll('Files',this.checked);" />
+      <b>全选/反选</b>
+  </label>
 
-<ul class="checklist" id="filelist"></ul>
+  <ul class="checklist" id="filelist"></ul>
 
-<h4 id="sep03">&nbsp</h4>
+  <h4 id="sep03">&nbsp</h4>
 
-<h3>提交选项:</h3>
+  <h3>提交选项:</h3>
 
-<table width="1000" border="0">
-    <tr>
-        <td align="left" valign="top">
-            
-            <select id="fileoption_submit" class="dropdown">
-                <option selected="selected">提交所有已选文件</option>
-                <option>只提交有改动文件</option>
-                <option>Revert 未改动文件</option>
-            </select>
-        </td>
-        <td align="right" valign="top" class="hidden">
-            <input type="checkbox" id='recheckout' />
-            <b>提交后重新Checkout</b>
-        </td>
-    </tr>
-</table>
+  <table width="1000" border="0">
+      <tr>
+          <td align="left" valign="top">
 
-<label for="alljobs" class="hidden">
-    <input type="checkbox" checked="checked" id="alljobs" onclick="checkAll('Jobs',this.checked);" />
-    <b>全选/反选</b>
-</label>
+              <select id="fileoption_submit" class="dropdown">
+                  <option selected="selected">提交所有已选文件</option>
+                  <option>只提交有改动文件</option>
+                  <option>Revert 未改动文件</option>
+              </select>
+          </td>
+          <td align="right" valign="top" class="hidden">
+              <input type="checkbox" id='recheckout' />
+              <b>提交后重新Checkout</b>
+          </td>
+      </tr>
+  </table>
 
-<ul class="checklist hidden" id="joblist"></ul>
+  <label for="alljobs" class="hidden">
+      <input type="checkbox" checked="checked" id="alljobs" onclick="checkAll('Jobs',this.checked);" />
+      <b>全选/反选</b>
+  </label>
 
-<table width="1000">
-    <tr>
-        <td valign="center" class="hidden">
-            <input type="text" id="jobAdd" name="jobAdd">
-            <button onclick="addJob()">添加任务</button>
-        </td>
-        <td align="right" valign="top" class="hidden">
-            <b>提交后 Job 状态变更为:</b>
-            <select id="jobstatus_submit" class="dropdown">
-                <option selected="selected">关闭</option>
-                <option>suspended</option>
-                <option>fixed</option>
-                <option>same</option>
-            </select>
-        </td>
-    </tr>
-</table>
+  <ul class="checklist hidden" id="joblist"></ul>
 
-<h6 id="sep02">&nbsp</h6>
+  <table width="1000">
+      <tr>
+          <td valign="center" class="hidden">
+              <input type="text" id="jobAdd" name="jobAdd">
+              <button onclick="addJob()">添加任务</button>
+          </td>
+          <td align="right" valign="top" class="hidden">
+              <b>提交后 Job 状态变更为:</b>
+              <select id="jobstatus_submit" class="dropdown">
+                  <option selected="selected">关闭</option>
+                  <option>suspended</option>
+                  <option>fixed</option>
+                  <option>same</option>
+              </select>
+          </td>
+      </tr>
+  </table>
 
-<table width="1028">
-    <tr>
-        <td align="left">
-            <input type="button" id="save" onclick="saveChange()" value="保存Changelist" />
-        </td>
-        <td align="right">
-            <input class="hidden" type="button" id="delete" onclick="deleteShelved()" value="Delete Shelved Files" />
-            <input type="button" id="cancel" onclick="p4vjs.closeWindow()" value="取消" />
-            <input type="button" id="submit" onclick="submitChanges()" value="提交" />
-        </td>
-    </tr>
+  <h6 id="sep02">&nbsp</h6>
 
-    <h6 id="sep02">&nbsp</h6>
+  <table width="1028">
+      <tr>
+          <td align="left">
+              <input type="button" id="save" onclick="saveChange()" value="保存Changelist" />
+          </td>
+          <td align="right">
+              <input class="hidden" type="button" id="delete" onclick="deleteShelved()" value="Delete Shelved Files" />
+              <input type="button" id="cancel" onclick="p4vjs.closeWindow()" value="取消" />
+              <input type="button" id="submit" onclick="submitChanges()" value="提交" />
+          </td>
+      </tr>
 
-    <tr>
-        <td></td>
-        <td align="right">
-            <p class="status">状态:</p>
-            <p class="status" id="status">待提交...</p>
-        </td>
-    </tr>
+      <h6 id="sep02">&nbsp</h6>
 
-</table>
+      <tr>
+          <td></td>
+          <td align="right">
+              <p class="status">状态:</p>
+              <p class="status" id="status">待提交...</p>
+          </td>
+      </tr>
 
-<textarea class="hidden" id="user"></textarea>
-<textarea class="hidden" id="change"></textarea>
-<textarea class="hidden" id="client"></textarea>
-<textarea class="hidden" id="status"></textarea>
+  </table>
 
-<style>
-    button, input[type=button] {
-        background-color: #3471ff;
-        border: none;
-        border-radius: 15px;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    }
-    select {
-        background: left top rgba(68, 68, 68, 1);
-        color: rgba(255, 255, 255, 1);
-        font-size: 14px;
-        border: 1px solid rgba(0, 0, 0, 1);
-        padding: 5px;
-        border-radius: 25px;
-    }
-    input[type=checkbox]:checked {
-            background:#E29F00;
-        }
-    input[type=checkbox] {
-        -webkit-appearance:none;
-        -moz-appearance:none;
-        outline: none;
-        width:20px;
-        height:20px;
-        background-color:#ffffff;
-        border:solid 1px #dddddd;
-        border-radius:50%;
-        margin:0;
-        padding:0;
-        position:relative;
-        display:inline-block;
-        /*文字对齐方式*/
-        vertical-align:top;
-        transition:background-color ease 0.1s;
-    }
-    input[type=checkbox]:checked::after {
-        content:'';
-        top:3px;
-        left:3px;
-        position:absolute;
-        border:#fff solid 2px;
-        border-top:none;
-        border-right:none;
-        height:6px;
-        width:10px;
-        transform:rotate(-45deg);
-    }
-    ul {
-        list-style-type: none;
-    }
-    textarea:focus { 
-        outline: none !important;
-        border-color: #719ECE;
-        box-shadow: 0 0 10px #719ECE;
-    }
-    .status {
-        font-size: 14px;
-    }
-</style>
+  <textarea class="hidden" id="user"></textarea>
+  <textarea class="hidden" id="change"></textarea>
+  <textarea class="hidden" id="client"></textarea>
+  <textarea class="hidden" id="status"></textarea>
+
+  <style>
+      button, input[type=button] {
+          background-color: #3471ff;
+          border: none;
+          border-radius: 15px;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+      select {
+          background: left top rgba(68, 68, 68, 1);
+          color: rgba(255, 255, 255, 1);
+          font-size: 14px;
+          border: 1px solid rgba(0, 0, 0, 1);
+          padding: 5px;
+          border-radius: 25px;
+      }
+      input[type=checkbox]:checked {
+              background:#E29F00;
+          }
+      input[type=checkbox] {
+          -webkit-appearance:none;
+          -moz-appearance:none;
+          outline: none;
+          width:20px;
+          height:20px;
+          background-color:#ffffff;
+          border:solid 1px #dddddd;
+          border-radius:50%;
+          margin:0;
+          padding:0;
+          position:relative;
+          display:inline-block;
+          /*文字对齐方式*/
+          vertical-align:top;
+          transition:background-color ease 0.1s;
+      }
+      input[type=checkbox]:checked::after {
+          content:'';
+          top:3px;
+          left:3px;
+          position:absolute;
+          border:#fff solid 2px;
+          border-top:none;
+          border-right:none;
+          height:6px;
+          width:10px;
+          transform:rotate(-45deg);
+      }
+      ul {
+          list-style-type: none;
+      }
+      textarea:focus { 
+          outline: none !important;
+          border-color: #719ECE;
+          box-shadow: 0 0 10px #719ECE;
+      }
+      .status {
+          font-size: 14px;
+      }
+  </style>
 </body>
 </html>
