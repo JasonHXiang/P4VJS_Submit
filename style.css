@@ -1,0 +1,46 @@
+body {
+    background: #f1f4f9;
+    padding: 0.2em;
+    margin: 0;
+    font-size: 0.85em;
+    color: #6e6e6e;
+}
+body * {
+    margin: 0.35em;
+    padding: 0.2em;
+    font-family: helvetica, sans-serif;
+}
+input,
+textarea,
+select {
+    background-color: #ffffff;
+    font-family: helvetica, sans-serif;
+    border: 0.1em solid #6e6e6e;
+}
+input[type=text] { 
+    color: black;
+    border: 0.1em solid #6e6e6e;
+}
+button,
+input[type=button] {
+  background-color: #f6f6f6;
+  border: 0.1em solid #6e6e6e;
+  border-radius: 0.2em;
+  padding: 0.2em 0.63em;
+}
+table {
+  border-collapse: collapse;
+}
+td, th {
+  font-size: 0.85em;
+  border: 0.1em solid #6e6e6e;
+  text-align: left;
+}
+.nameFont {
+  color:DarkGray;
+}
+.hidden {
+  visibility:hidden;
+}
+
+
